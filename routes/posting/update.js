@@ -11,6 +11,6 @@ module.exports = async function (fastify, opts) {
         reply
         .code(200)
         .header("content-type", "application/json")
-        .send({readresult})
+        .send({result})
   })
 }
