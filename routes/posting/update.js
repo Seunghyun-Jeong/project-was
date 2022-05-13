@@ -5,7 +5,7 @@ module.exports = async function (fastify, opts) {
       
         const posting = this.mongo.db.collection('posting')
         const id = this.mongo.ObjectId(request.params.id)
-        const downdated = await posting.findOneAndUpdate({
+        await posting.findOneAndUpdate({
           _id:id
         }, {
           $set: request.body
