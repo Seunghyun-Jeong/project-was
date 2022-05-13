@@ -7,9 +7,7 @@ module.exports = async function (fastify, opts) {
         const posting = this.mongo.db.collection('posting')
         const created = await posting.insertOne(request.body)
         const result = await posting.findOne({_id:created.insertedId})
-        // const id = created.value.insertedid
-        // console.log(id) 
-        //return result
+        
         reply
         .code(201)
         .header("content-type", "application/json")
