@@ -1,9 +1,10 @@
 module.exports = async function (fastify, opts) {
-    fastify.post('/', async function (request, reply) {
+    fastify.post('/:id', async function (request, reply) {
       const token = request.headers.authorization.split(" ")[1]
         
         console.log(token);
         request.body.userid = token
+        request.body.postid = request.params.id
 
         const check = await this.mongo.db.collection('likes').findOne({ userid: token, postid: request.body.postid})
         console.log('###',check)
